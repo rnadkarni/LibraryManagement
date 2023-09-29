@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <artifactId>quarkus-spring-api</artifactId>
+    <groupId>io.quarkus</groupId>
+    <version>5.2.SP7</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>io.quarkus</groupId>
+  <artifactId>quarkus-spring-webmvc-api</artifactId>
+  <version>5.2.SP7</version>
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>${maven-shade-plugin.version}</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <createSourcesJar>true</createSourcesJar>
+              <artifactSet>
+                <includes>
+                  <include>org.springframework:spring-webmvc</include>
+                </includes>
+              </artifactSet>
+              <filters>
+                <filter>
+                  <artifact>org.springframework:spring-webmvc</artifact>
+                  <includes>
+                    <include>org/springframework/web/servlet/ModelAndView**</include>
+                    <include>org/springframework/web/servlet/View**</include>
+                  </includes>
+                </filter>
+              </filters>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

@@ -1,0 +1,4 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Sep 06 16:14:31 BST 2023
+importmap-1.0.8.jar>central=
+importmap-1.0.8.pom>central=
